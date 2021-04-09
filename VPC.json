@@ -1,0 +1,101 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  "Description" : "This stack will create a VPC from scratch with one public subnet and private subnet",
+  "Parameters" : {
+      "VPC" : {
+          "Type" : "String",
+          "Default" : "VPC Scratch",
+          "Description" : "Provide a name to your VPC"
+      },
+      "InternetGateway" : {
+          "Type" : "String",
+          "Default" : "IG-Scratch",
+          "Description" : "Provide a name to your Internet Gateway that will be attach to the VPC"
+      },
+      "PublicSubnetAZ": {
+        "Description": "Availability Zone of the Public Subnet",
+        "Type": "AWS::EC2::AvailabilityZone::Name"
+      },
+      "PublicSubnet" : {
+        "Type" : "String",
+        "Default" : "Public Subnet",
+        "Description" : "Provide a name to public subnet"
+    },
+    "PrivateSubnetAZ": {
+        "Description": "Availability Zone of the Private Subnet",
+        "Type": "AWS::EC2::AvailabilityZone::Name"
+      },
+    "PrivateSubnet" : {
+        "Type" : "String",
+        "Default" : "Private Subnet",
+        "Description" : "Provide a name to public subnet"
+    }
+  },
+  "Resources" : {
+    "myVPC" : {
+        "Type" : "AWS::EC2::VPC",
+        "Properties" : {
+            "CidrBlock" : "10.0.0.0/16",
+            "EnableDnsSupport" : "true",
+            "EnableDnsHostnames" : "true",
+            "InstanceTenancy" : "default",
+            "Tags" : [ {"Key" : "Name", "Value" : { "Ref" : "VPC" }} ]
+        }
+    },
+    "publicsubnet" : {
+        "Type" : "AWS::EC2::Subnet",
+        "Properties" : {
+            "AvailabilityZone" : { "Ref" : "PublicSubnetAZ"},
+            "CidrBlock" : "10.0.0.0/24",
+            "MapPublicIpOnLaunch" : "true",
+            "VpcId" : { "Ref" : "myVPC"},
+            "Tags" : [ {"Key" : "Name", "Value" : { "Ref" : "PublicSubnet"} } ]
+        } 
+    },
+    "privatesubnet" : {
+        "Type" : "AWS::EC2::Subnet",
+        "Properties" : {
+            "AvailabilityZone" : { "Ref" : "PrivateSubnetAZ"},
+            "CidrBlock" : "10.0.1.0/24",
+            "MapPublicIpOnLaunch" : "true",
+            "VpcId" : { "Ref" : "myVPC"},
+            "Tags" : [ {"Key" : "Name", "Value" : { "Ref" : "PrivateSubnet"} } ]
+        }
+    },
+    "Internetgateway" : {
+        "Type" : "AWS::EC2::InternetGateway",
+            "Properties" : {
+                "Tags" : [ {"Key" : "Name", "Value" : { "Ref" : "InternetGateway"} } ]
+            }
+        },
+    "AttachGateway" : {
+        "Type" : "AWS::EC2::VPCGatewayAttachment",
+        "Properties" : {
+            "VpcId" : { "Ref" : "myVPC" },
+            "InternetGatewayId" : { "Ref" : "Internetgateway" }
+        }
+    },
+    "myRouteTable" : {
+        "Type" : "AWS::EC2::RouteTable",
+        "Properties" : {
+           "VpcId" : { "Ref" : "myVPC" },
+           "Tags" : [ { "Key" : "Name", "Value" : "scratchrt" } ]
+        }
+     },  
+    "myRoute" : {
+        "Type" : "AWS::EC2::Route",
+        "Properties" : {
+            "RouteTableId" : { "Ref" : "myRouteTable" },
+            "DestinationCidrBlock" : "0.0.0.0/0",
+            "GatewayId" : { "Ref" : "Internetgateway" }
+        }
+    },
+    "mySubnetRouteTableAssociation" : {
+        "Type" : "AWS::EC2::SubnetRouteTableAssociation",
+        "Properties" : {
+            "SubnetId" : { "Ref" : "publicsubnet" },
+            "RouteTableId" : { "Ref" : "myRouteTable" }
+        }
+    }
+  }
+}
