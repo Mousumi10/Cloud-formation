@@ -1,0 +1,50 @@
+str = "EhJ"
+k=9
+lsr=list(str)
+help1 = (ord(lsr[0]) - 65 - k)%26
+print(help1)
+for i in range(len(str)):
+    if lsr[i].islower():
+        help = (ord(lsr[i]) - ord('a') - k) % 26 + ord('a')
+        print(chr(help))
+    elif lsr[i].isupper():
+        help = (ord(lsr[i]) - ord('A') - k) % 26 + ord('A')
+        print(chr(help))
+		
+		
+cost of 1st IP attached to running ec2 = 0.00 usd
+cost of 2nd IP attached to running ec2 for 730hrs/month = (0.005x730) USD
+cost of any of the each IPs attached to stopped ec2 for 730hrs/month(ec2 in stopped stage for 730hrs/month) = (0.005x730) USD
+cost of any of the each IPs in unassociated state for 730hrs/month = (0.005x730) USD
+
+
+https://image.freepik.com/free-vector/luxury-logo-design-collection-branding-coporate-identity_25819-722.jpg
+
+my git hub private key
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEAmWbOptf5FkVbOJuDJoQMdmvveOwQucBXzR+179LFGGwUyWm4
+dw8MNR6ZBaQV1AfA0Dp1NfKviByiXjcpSTGiHoynxRZZfK5wYfrMTbkb7ktKv8Vw
+FOiM3EdoKZHq7nUWzcb6ddxOfufAaZOJUCnwablZGvCVTnTB8ocGx+nGSbE9d8eM
+8bIr9SuWSkDLuOjDkgKsDKq0xSwZWdlpchqP9yqA6i+4byOfFMJbsbLJ4UeMP3t4
+gKfADQN3JMoCv0F+6glOUL1R9xmHni194STqW2m73rXXUZwGKFy7XTP1AhUBpBXL
+V8wFHxlqmKRJkgWb32734nQojgyMNzaUOkgEXwIDAQABAoIBAGFtKPxQGLPrUrdO
+FWql3SBtBse+7hR7M4hkhnGNZH5RTpZpHa4IEZG/ICK0BuUGE5BsQDsGKjOBNCIw
+WHlTG4rZfEgxHJ6ST2/7EDygvzuF+DB53eh5ldTlSSN1uEbAeL4yjKnERNpWqB6l
+hEU0jasn+46fk8QjZXZ6CXV4ZOYxvoHQdb+121SD0Nb1zYZjT4a0ZnDY5ZlDpcae
+cLVsFAKXJg52QERnC+3LnwlQ5GOYxMRkVVENAn4bJGwgMuL3YGMmPBpzevH5VSzn
+oyjAWe0c6Zld79DoYndfE0EMILkewXXM8N3Pbk5oTuz4p/TUbCBZD8mr+9nghHRl
+2hjqKTkCgYEAyKxLODmCSfk1o/PwHpsAlt8xxiDvAVsCFvilxUYI4Fio5pZT9378
+out604vY6B2jiXvFsGkGZ/LaGaHKC3FZp+2E8mj9ChEWZwZOyTDE44NGsWFBc+Il
+L5mv0DJqgPP+gYUCtgVy9WGDRVaYOOnAXhvO1j4cyJQ8fyC+DfEfwuUCgYEAw7IM
+MUq3ujaRQvuyWTYV2Szj+EKLb4AgNh2YPfu76lbqAkKcVPmtacs963J63Y96Tvxp
+EaMQo6dPdstnvg+knpCr2XZgWADzD7oto+bqA5NWx8GJamk1PcaOGd3hILibJlPe
+FK79f8QKauwgwwLW8H9d4MM2OIWGIg4fbRhQofMCgYEAwdwwjpCAHZZzC4CNaAO1
+/gqAuzb1rgmNa0OqYXnW+WStRpXTaDV1Oq7iaZugYBzB7/9ya4oKdkFWEY0K8yL9
+ygzbcpOaYC9BxSWC1zoV+vTHRnT+FkVSRznhbvBFk24jYFxu0glRlVwuxL1zMQgg
+nsmed7ppdBxAlU+8Sxu140ECgYAGTO8zjxJHPoaCv5PIZ4NgkJ9uWMYgeuGOnHlQ
+VZCBRPcXx4k8+yToKRD/SZpHE91+OYYweS2J91MJohbe+aX1LPc7cyI68xzgPsBF
+bKPQJag/mi2QbX63VHMyxf//i7IDE+Qsik3DFU64jo2neant6EvfdqmCPFpLMmU0
+n/nInQKBgQCM8HDKIHyikxE6cAAT/57QiGWoDWjb09Bct/7J1rrV9aHWvNx+njyT
+9BLT56lA8lY/z8C5/NN0o4DJmGsH0wDI95sMTcw/ccO670S88wnXhSkbLWYhqWbK
+MHYWNrGtk6I078xqraLJLtIPVGvR40xGO3gOVfE6Xu8FcmbumFT8PQ==
+-----END RSA PRIVATE KEY-----
